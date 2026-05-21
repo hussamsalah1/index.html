@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حسام صلاح - مطور ويب محترف</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #2d3436;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a5f3a 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #52c96a;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+        
+        nav a:hover {
+            color: #52c96a;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a5f3a 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            color: #bdc3c7;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #52c96a;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            font-weight: bold;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #3da84e;
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: #2c3e50;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #52c96a;
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .skill-box {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: 0.3s;
+        }
+        
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(82, 201, 106, 0.2);
+        }
+        
+        .skill-box h3 {
+            color: #52c96a;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+        
+        .skill-box p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .experience {
+            background: white;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-right: 5px solid #52c96a;
+        }
+        
+        .experience h3 {
+            color: #2c3e50;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .experience .company {
+            color: #52c96a;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .experience .period {
+            color: #7f8c8d;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        
+        .experience p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(82, 201, 106, 0.2);
+        }
+        
+        .project-header {
+            background: linear-gradient(135deg, #2c3e50 0%, #1a5f3a 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .project-header h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .tech-tag {
+            background: #e8f5e9;
+            color: #1a5f3a;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        .contact-section {
+            text-align: center;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-item {
+            padding: 20px;
+        }
+        
+        .contact-item h3 {
+            color: #52c96a;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        .contact-item p {
+            color: #555;
+            font-size: 1.05em;
+        }
+        
+        .contact-item a {
+            color: #52c96a;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .contact-item a:hover {
+            color: #3da84e;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 80px;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+                font-size: 0.9em;
+            }
+            
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .skills {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">HS</div>
+            <ul>
+                <li><a href="#" onclick="showPage('home')">الرئيسية</a></li>
+                <li><a href="#" onclick="showPage('about')">عني</a></li>
+                <li><a href="#" onclick="showPage('experience')">خبرتي</a></li>
+                <li><a href="#" onclick="showPage('projects')">مشاريعي</a></li>
+                <li><a href="#" onclick="showPage('contact')">تواصل معي</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- صفحة الرئيسية -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>مرحباً، أنا حسام صلاح 👋</h1>
+            <p>مطور ويب محترف متخصص في تطوير التطبيقات والمواقع الحديثة</p>
+            <a href="#" onclick="showPage('projects')" class="btn">شاهد مشاريعي</a>
+            <a href="#" onclick="showPage('contact')" class="btn">تواصل معي</a>
+        </div>
+    </div>
+
+    <!-- صفحة عني -->
+    <div id="about" class="page">
+        <div class="container">
+            <h2 class="section-title">من أنا؟</h2>
+            <div class="about-content">
+                <p>
+                    مرحباً! أنا حسام صلاح، مطور ويب محترف بخبرة عملية واسعة في تطوير التطبيقات والمواقع الإلكترونية الحديثة. أعمل حالياً في شركة متخصصة في تطوير المشاريع الرقمية المبتكرة.
+                </p>
+                <p>
+                    أؤمن بأن التكنولوجيا يجب أن تكون بسيطة وفعالة، وأسعى دائماً لتقديم حلول متطورة تلبي احتياجات العملاء وتتجاوز توقعاتهم.
+                </p>
+                <p>
+                    تخصصي يشمل بناء تطبيقات ويب متقدمة، واجهات مستخدم جذابة، وأنظمة قوية وآمنة. أحب العمل مع فريق محترف وتطوير مهاراتي باستمرار.
+                </p>
+            </div>
+            
+            <h2 class="section-title" style="margin-top: 80px;">المهارات الأساسية</h2>
+            <div class="skills">
+                <div class="skill-box">
+                    <h3>🎨 Frontend Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Vue.js تصميم واجهات مستخدم حديثة وتفاعلية</p>
+                </div>
+                <div class="skill-box">
+                    <h3>⚙️ Backend Development</h3>
+                    <p>Node.js, Express, Python قواعد البيانات والخوادم القوية والآمنة</p>
+                </div>
+                <div class="skill-box">
+                    <h3>📱 Mobile Development</h3>
+                    <p>React Native, Flutter تطبيقات الهاتف المحمول الاحترافية</p>
+                </div>
+                <div class="skill-box">
+                    <h3>🗄️ Database</h3>
+                    <p>MongoDB, MySQL, PostgreSQL إدارة البيانات والقواعد المتقدمة</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة الخبرة -->
+    <div id="experience" class="page">
+        <div class="container">
+            <h2 class="section-title">خبرتي المهنية</h2>
+            
+            <div class="experience">
+                <h3>مطور ويب أول</h3>
+                <div class="company">شركة تطوير التطبيقات والمواقع</div>
+                <div class="period">2022 - الحالي</div>
+                <p>
+                    • قيادة فريق تطوير المشاريع الكبيرة والمعقدة<br>
+                    • تطوير تطبيقات ويب متقدمة باستخدام أحدث التقنيات<br>
+                    • تصميم وتطوير واجهات مستخدم جذابة وفعالة<br>
+                    • إدارة المشاريع والعمل مع الفريق بكفاءة عالية
+                </p>
+            </div>
+
+            <div class="experience">
+                <h3>مطور ويب</h3>
+                <div class="company">شركة الحلول الرقمية</div>
+                <div class="period">2020 - 2022</div>
+                <p>
+                    • تطوير مواقع إلكترونية احترافية ومتجاوبة<br>
+                    • العمل مع قواعد البيانات وإدارة الخوادم<br>
+                    • تحسين أداء التطبيقات والمواقع<br>
+                    • دعم فني وصيانة المشاريع الموجودة
+                </p>
+            </div>
+
+            <div class="experience">
+                <h3>مطور ويب مبتدئ</h3>
+                <div class="company">شركة تقنية متخصصة</div>
+                <div class="period">2019 - 2020</div>
+                <p>
+                    • تطوير صفحات ويب وتطبيقات بسيطة<br>
+                    • تعلم أساسيات البرمجة والعمل مع الفريق<br>
+                    • المساهمة في مشاريع متنوعة<br>
+                    • دعم المطورين الأقدم والتعلم المستمر
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة المشاريع -->
+    <div id="projects" class="page">
+        <div class="container">
+            <h2 class="section-title">مشاريعي</h2>
+            
+            <div class="projects">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>منصة التجارة الإلكترونية</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            منصة تجارة إلكترونية متكاملة توفر تجربة تسوق سلسة وآمنة مع نظام دفع متطور وإدارة مخزون ذكية.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Stripe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>تطبيق إدارة المشاريع</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            تطبيق شامل لإدارة المشاريع يمكّن الفريق من التعاون والتواصل وتتبع تقدم العمل بفعالية.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">Socket.io</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>موقع الشركة الحديث</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            موقع شركة احترافي بتصميم حديث وسريع التحميل مع محرك بحث قوي ونظام إدارة محتوى متقدم.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Tailwind</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">CMS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>تطبيق المحفظة الرقمية</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            تطبيق محفظة رقمية آمن يمكّن المستخدمين من إدارة أموالهم وتحويل الأموال بسهولة وأمان.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Encryption</span>
+                            <span class="tech-tag">APIs</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>منصة التعليم الإلكتروني</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            منصة تعليمية شاملة توفر دورات تدريبية تفاعلية مع نظام متابعة تقدم الطلاب المتقدم.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">MySQL</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>تطبيق الشبكة الاجتماعية</h3>
+                    </div>
+                    <div class="project-content">
+                        <p>
+                            تطبيق شبكة اجتماعية متقدم يوفر تواصل آني بين المستخدمين مع نظام إشعارات ذكي.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flutter</span>
+                            <span class="tech-tag">Firebase</span>
+                            <span class="tech-tag">Real-time DB</span>
+                            <span class="tech-tag">Cloud</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة التواصل -->
+    <div id="contact" class="page">
+        <div class="container">
+            <h2 class="section-title">تواصل معي</h2>
+            
+            <div class="contact-section">
+                <p style="font-size: 1.1em; color: #555; margin-bottom: 30px;">
+                    هل لديك مشروع تريد تنفيذه أو تريد الحديث عن فرصة عمل؟ لا تتردد في التواصل معي!
+                </p>
+                
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📧 البريد الإلكتروني</h3>
+                        <p><a href="mailto:hussamnh21@gmail.com">hussamnh21@gmail.com</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>💼 LinkedIn</h3>
+                        <p><a href="https://linkedin.com" target="_blank">حسام صلاح</a></p>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <h3>💻 GitHub</h3>
+                        <p><a href="https://github.com/hussamsalah1" target="_blank">hussamsalah1</a></p>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 50px;">
+                    <a href="mailto:hussamnh21@gmail.com" class="btn">أرسل لي بريد إلكتروني</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 حسام صلاح - جميع الحقوق محفوظة | مطور ويب محترف</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // إخفاء جميع الصفحات
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // إظهار الصفحة المختارة
+            document.getElementById(pageId).classList.add('active');
+            
+            // تمرير لأعلى الصفحة
+            window.scrollTo(0, 0);
+        }
+    </script>
+
+</body>
+</html>
